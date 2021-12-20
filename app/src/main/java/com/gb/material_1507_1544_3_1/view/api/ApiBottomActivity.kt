@@ -1,12 +1,8 @@
 package com.gb.material_1507_1544_3_1.view.api
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.gb.material_1507_1544_3_1.view.chips.SettingsFragment
 import com.gb.material_1507_1555_3_1.R
-import com.gb.material_1507_1555_3_1.databinding.ActivityApiBinding
 import com.gb.material_1507_1555_3_1.databinding.ActivityBottomApiBinding
 import com.google.android.material.badge.BadgeDrawable
 

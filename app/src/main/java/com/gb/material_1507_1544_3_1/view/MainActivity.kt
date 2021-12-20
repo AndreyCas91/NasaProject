@@ -1,11 +1,7 @@
 package com.gb.material_1507_1544_3_1.view
 
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.*
-import androidx.appcompat.app.AppCompatDelegate
-import com.gb.material_1507_1544_3_1.view.chips.SettingsFragment
+import androidx.appcompat.app.AppCompatActivity
 import com.gb.material_1507_1544_3_1.view.picture.PictureOfTheDayFragment
 import com.gb.material_1507_1555_3_1.R
 
