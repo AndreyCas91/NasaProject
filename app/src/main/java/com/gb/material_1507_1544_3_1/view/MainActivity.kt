@@ -18,11 +18,11 @@ class MainActivity : AppCompatActivity() {
         // если во время исполнения то не забываем выполнить recreate()
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
-            /*supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()*/
-
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, SettingsFragment.newInstance()).commit()
+                .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
+
+           /* supportFragmentManager.beginTransaction()
+                .replace(R.id.container, SettingsFragment.newInstance()).commit()*/
         }
         //recreate()
     }
