@@ -11,7 +11,7 @@ private const val SYSTEM_FRAGMENT = 2
 //TODO избавиться от устаревшего FragmentStatePagerAdapter
 class ViewPagerAdapter(private  val fm: FragmentManager): FragmentStatePagerAdapter(fm) {
 
-    private val fragments = arrayOf(EarthFragment(),MarsFragment(),SystemFragment())
+    val fragments = arrayOf(EarthFragment(),MarsFragment(),SystemFragment())
 
     override fun getCount()= fragments.size
 
