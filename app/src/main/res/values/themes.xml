@@ -30,6 +30,14 @@
     </style>
 
 
+    <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="colorSurface">@color/colorAccent</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorPrimarySurface">@color/color_gray</item>
+        <item name="colorOnPrimarySurface">@color/color_connected</item>
+    </style>
+
     <style name="MyCardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/purple_700</item>
         <item name="cardCornerRadius">100dp</item>

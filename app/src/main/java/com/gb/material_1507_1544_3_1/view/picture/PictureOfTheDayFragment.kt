@@ -62,20 +62,11 @@ class PictureOfTheDayFragment : Fragment() {
         behavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
-                when (newState) {
-                    /* BottomSheetBehavior.STATE_DRAGGING -> TODO("not implemented")
-                     BottomSheetBehavior.STATE_COLLAPSED -> TODO("not implemented")
-                     BottomSheetBehavior.STATE_EXPANDED -> TODO("not implemented")
-                     BottomSheetBehavior.STATE_HALF_EXPANDED -> TODO("not implemented")
-                     BottomSheetBehavior.STATE_HIDDEN -> TODO("not implemented")
-                     BottomSheetBehavior.STATE_SETTLING -> TODO("not implemented")*/
-                }
+
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 Log.d("mylogs", "$slideOffset slideOffset")
-
-                //TODO("not implemented")
             }
         })
 
@@ -85,7 +76,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     private fun renderData(state: PictureOfTheDayState) {
         when (state) {
-            is PictureOfTheDayState.Error -> {//TODO(ДЗ)
+            is PictureOfTheDayState.Error -> { state.error.message
             }
             is PictureOfTheDayState.Loading -> {
                 binding.imageView.load(R.drawable.ic_no_photo_vector)

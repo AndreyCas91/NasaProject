@@ -16,6 +16,7 @@ class ViewPagerAdapter(private  val fm: FragmentManager): FragmentStatePagerAdap
     override fun getCount()= fragments.size
 
     override fun getItem(position: Int): Fragment {
+        fragments[position]
         return when(position){
             EARTH_FRAGMENT ->fragments[EARTH_FRAGMENT]
             MARS_FRAGMENT ->fragments[MARS_FRAGMENT ]
@@ -24,7 +25,6 @@ class ViewPagerAdapter(private  val fm: FragmentManager): FragmentStatePagerAdap
         }
     }
 
-    // TODO исправить неточности
     /*override fun getPageTitle(position: Int): CharSequence? {
         return when(position){
             EARTH_FRAGMENT ->"EARTH"
