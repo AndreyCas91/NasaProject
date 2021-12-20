@@ -25,12 +25,12 @@ class ViewPagerAdapter(private  val fm: FragmentManager): FragmentStatePagerAdap
     }
 
     // TODO исправить неточности
-    override fun getPageTitle(position: Int): CharSequence? {
+    /*override fun getPageTitle(position: Int): CharSequence? {
         return when(position){
             EARTH_FRAGMENT ->"EARTH"
             MARS_FRAGMENT ->"MARS"
             SYSTEM_FRAGMENT ->"SYSTEM"
             else -> "EARTH"
         }
-    }
+    }*/
 }
