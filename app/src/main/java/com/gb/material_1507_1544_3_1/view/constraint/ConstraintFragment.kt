@@ -4,12 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.gb.material_1507_1555_3_1.R
 import com.gb.material_1507_1555_3_1.databinding.FragmentConstraintBinding
-import com.gb.material_1507_1555_3_1.databinding.FragmentSettingsBinding
-import com.google.android.material.chip.Chip
 
 
 class ConstraintFragment : Fragment() {
@@ -37,7 +33,8 @@ class ConstraintFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.group1.visibility = View.GONE
+
+        /*binding.group1.visibility = View.GONE
         binding.group2.visibility = View.INVISIBLE
 
         binding.materialButton3.setOnClickListener {
@@ -47,7 +44,7 @@ class ConstraintFragment : Fragment() {
         binding.materialButton33.setOnClickListener {
             binding.group1.visibility = View.GONE
             binding.group2.visibility = View.INVISIBLE
-        }
+        }*/
         //аналогично
         /*binding.materialButton1.visibility  =View.GONE
         binding.materialButton2.visibility  =View.GONE
@@ -59,6 +56,6 @@ class ConstraintFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-            ConstraintFragment()
+            CoordinatorFragment()
     }
 }
