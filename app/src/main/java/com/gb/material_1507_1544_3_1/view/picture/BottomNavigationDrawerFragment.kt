@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.gb.material_1507_1544_3_1.view.constraint.ConstraintFragment
 import com.gb.material_1507_1544_3_1.view.constraint.CoordinatorFragment
+import com.gb.material_1507_1544_3_1.view.constraint.MotionFragment
 import com.gb.material_1507_1555_3_1.R
 import com.gb.material_1507_1555_3_1.databinding.BottomNavigationLayoutBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -38,6 +38,10 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 R.id.navigation_two -> {
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.container, CoordinatorFragment.newInstance()).addToBackStack("").commit()
+                }
+                R.id.navigation_third -> {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, MotionFragment.newInstance()).addToBackStack("").commit()
                 }
             }
             dismiss()

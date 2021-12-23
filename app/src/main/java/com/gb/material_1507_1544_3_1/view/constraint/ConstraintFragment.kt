@@ -56,6 +56,6 @@ class ConstraintFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-            CoordinatorFragment()
+            MotionFragment()
     }
 }

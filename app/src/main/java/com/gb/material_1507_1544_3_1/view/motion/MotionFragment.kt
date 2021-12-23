@@ -7,14 +7,15 @@ import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.gb.material_1507_1544_3_1.view.coordinator.NestedBehavior
+import com.gb.material_1507_1555_3_1.databinding.BonusStartBinding
 import com.gb.material_1507_1555_3_1.databinding.FragmentCoordinatorBinding
 
 
-class CoordinatorFragment : Fragment() {
+class MotionFragment : Fragment() {
 
 
-    private var _binding: FragmentCoordinatorBinding? = null
-    val binding: FragmentCoordinatorBinding
+    private var _binding: BonusStartBinding? = null
+    val binding: BonusStartBinding
         get() {
             return _binding!!
         }
@@ -29,15 +30,12 @@ class CoordinatorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCoordinatorBinding.inflate(inflater, container, false)
+        _binding = BonusStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val nestedBehavior= NestedBehavior()
-        (binding.nested.layoutParams as CoordinatorLayout.LayoutParams).behavior = nestedBehavior
     }
 
     companion object {
