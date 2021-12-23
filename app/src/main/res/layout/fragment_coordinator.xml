@@ -42,11 +42,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_anchor="@id/main_appbar"
-        app:layout_anchorGravity="bottom"
-        app:layout_behavior="com.gb.material_1507_1544_3_1.view.coordinator.NestedBehavior">
+        app:layout_anchorGravity="bottom">
 
         <LinearLayout
             android:layout_width="match_parent"

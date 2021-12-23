@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import com.gb.material_1507_1544_3_1.view.coordinator.NestedBehavior
 import com.gb.material_1507_1555_3_1.databinding.FragmentConstraintBinding
 import com.gb.material_1507_1555_3_1.databinding.FragmentCoordinatorBinding
 
@@ -35,7 +38,8 @@ class CoordinatorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        
+        val nestedBehavior= NestedBehavior()
+        (binding.nested.layoutParams as CoordinatorLayout.LayoutParams).behavior = nestedBehavior
     }
 
     companion object {
