@@ -20,6 +20,7 @@ import com.gb.material_1507_1544_3_1.viewmodel.PictureOfTheDayState
 import com.gb.material_1507_1544_3_1.viewmodel.PictureOfTheDayViewModel
 import com.gb.material_1507_1555_3_1.R
 import com.gb.material_1507_1555_3_1.databinding.FragmentMainBinding
+import com.gb.material_1507_1555_3_1.databinding.FragmentMainStartBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import java.text.SimpleDateFormat
@@ -27,8 +28,8 @@ import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
 
-    private var _binding: FragmentMainBinding? = null
-    val binding: FragmentMainBinding
+    private var _binding: FragmentMainStartBinding? = null
+    val binding: FragmentMainStartBinding
         get() {
             return _binding!!
         }
@@ -115,7 +116,7 @@ class PictureOfTheDayFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentMainStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
