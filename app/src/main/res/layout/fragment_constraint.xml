@@ -6,62 +6,100 @@
     android:orientation="vertical"
     tools:context="com.gb.material_1507_1544_3_1.view.chips.SettingsFragment">
 
+    <Button
+        android:id="@+id/parentSDuper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleAngle="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-
-    <
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:constraint_referenced_ids="materialButton1,materialButton2" />
-
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrierH1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:barrierDirection="end"
-        app:constraint_referenced_ids="materialButton1,materialButton2" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrierV1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="materialButton1,materialButton2" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton1"
+    <Button
+        android:id="@+id/button1"
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="0"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton2"
+    <Button
+        android:id="@+id/button2"
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton3"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="40"/>
+    <Button
+        android:id="@+id/button3"
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3"
-        app:layout_constraintStart_toStartOf="@id/barrierH1"
-        app:layout_constraintTop_toBottomOf="@id/barrierV1" />
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="80"/>
+
+    <Button
+        android:id="@+id/button4"
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="120"/>
+
+    <Button
+        android:id="@+id/button5"
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="160"/>
+    <Button
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="200"/>
+    <Button
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="240"/>
+    <Button
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="280"/>
+    <Button
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="320"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
