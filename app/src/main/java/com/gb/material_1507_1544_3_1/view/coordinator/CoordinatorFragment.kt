@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.gb.material_1507_1544_3_1.view.coordinator.NestedBehavior
-import com.gb.material_1507_1555_3_1.databinding.FragmentCoordinatorBinding
+import com.gb.material_1507_1544_3_1.databinding.FragmentCoordinatorBinding
 
 
 class CoordinatorFragment : Fragment() {
@@ -43,6 +43,6 @@ class CoordinatorFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-            MotionFragment()
+            CoordinatorFragment()
     }
 }

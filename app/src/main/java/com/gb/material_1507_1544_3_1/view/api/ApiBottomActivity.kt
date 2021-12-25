@@ -2,8 +2,8 @@ package com.gb.material_1507_1544_3_1.view.api
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.gb.material_1507_1555_3_1.R
-import com.gb.material_1507_1555_3_1.databinding.ActivityBottomApiBinding
+import com.gb.material_1507_1544_3_1.R
+import com.gb.material_1507_1544_3_1.databinding.ActivityBottomApiBinding
 import com.google.android.material.badge.BadgeDrawable
 
 class ApiBottomActivity : AppCompatActivity() {

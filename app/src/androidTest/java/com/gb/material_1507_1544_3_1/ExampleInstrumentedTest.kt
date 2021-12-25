@@ -1,4 +1,4 @@
-package com.gb.material_1507_1555_3_1
+package com.gb.material_1507_1544_3_1
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.gb.material_1507_1555_3_1", appContext.packageName)
+        assertEquals("com.gb.material_1507_1544_3_1", appContext.packageName)
     }
 }

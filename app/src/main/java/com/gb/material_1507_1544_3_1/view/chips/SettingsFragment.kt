@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.gb.material_1507_1555_3_1.R
-import com.gb.material_1507_1555_3_1.databinding.FragmentSettingsBinding
+import com.gb.material_1507_1544_3_1.R
+import com.gb.material_1507_1544_3_1.databinding.FragmentSettingsBinding
 import com.google.android.material.chip.Chip
 
 

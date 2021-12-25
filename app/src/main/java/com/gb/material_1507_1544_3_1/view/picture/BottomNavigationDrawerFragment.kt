@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import com.gb.material_1507_1544_3_1.view.constraint.ConstraintFragment
 import com.gb.material_1507_1544_3_1.view.constraint.CoordinatorFragment
 import com.gb.material_1507_1544_3_1.view.constraint.MotionFragment
-import com.gb.material_1507_1555_3_1.R
-import com.gb.material_1507_1555_3_1.databinding.BottomNavigationLayoutBinding
+import com.gb.material_1507_1544_3_1.R
+import com.gb.material_1507_1544_3_1.databinding.BottomNavigationLayoutBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gb.material_1507_1544_3_1.repository.PictureOfTheDayResponseData
 import com.gb.material_1507_1544_3_1.repository.PictureOfTheDayRetrofitImpl
-import com.gb.material_1507_1555_3_1.BuildConfig
+import com.gb.material_1507_1544_3_1.BuildConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

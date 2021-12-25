@@ -18,9 +18,8 @@ import com.gb.material_1507_1544_3_1.view.api.ApiBottomActivity
 import com.gb.material_1507_1544_3_1.view.chips.SettingsFragment
 import com.gb.material_1507_1544_3_1.viewmodel.PictureOfTheDayState
 import com.gb.material_1507_1544_3_1.viewmodel.PictureOfTheDayViewModel
-import com.gb.material_1507_1555_3_1.R
-import com.gb.material_1507_1555_3_1.databinding.FragmentMainBinding
-import com.gb.material_1507_1555_3_1.databinding.FragmentMainStartBinding
+import com.gb.material_1507_1544_3_1.R
+import com.gb.material_1507_1544_3_1.databinding.FragmentMainStartBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import java.text.SimpleDateFormat

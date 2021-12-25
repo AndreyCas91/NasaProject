@@ -2,8 +2,8 @@ package com.gb.material_1507_1544_3_1.view.api
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.gb.material_1507_1555_3_1.R
-import com.gb.material_1507_1555_3_1.databinding.ActivityApiBinding
+import com.gb.material_1507_1544_3_1.R
+import com.gb.material_1507_1544_3_1.databinding.ActivityApiBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
