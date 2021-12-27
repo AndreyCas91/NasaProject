@@ -1,6 +1,9 @@
 package com.gb.material_1507_1544_3_1.view.animations
 
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.graphics.Rect
 import android.media.Image
 import android.os.Bundle
@@ -21,37 +24,87 @@ import com.gb.material_1507_1544_3_1.R
 
 import com.gb.material_1507_1544_3_1.databinding.ActivityAnimationsBinding
 
+private const val duration = 1000L
 class AnimationsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAnimationsBinding
-
-    private var isDirectionRight= false
+    var isExpanded = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val titles: MutableList<String> = ArrayList()
-        for (i in 0..4) {
-            titles.add("Item $i")
-        }
+        binding.transparentBackground.alpha =0f
+        binding.optionOneContainer.alpha =0f
+        binding.optionOneContainer.isClickable = false
+        binding.optionTwoContainer.alpha =0f
+        binding.optionTwoContainer.isClickable = false
 
+        binding.fab.setOnClickListener {
 
-        binding.button.setOnClickListener {
+            if(isExpanded){
+                isExpanded = false
+                ObjectAnimator.ofFloat(binding.plusImageview,"rotation",315f,0f)
+                    .setDuration(duration).start()
+                ObjectAnimator.ofFloat(binding.optionOneContainer,"translationY",0f)
+                    .setDuration(duration).start()
+                ObjectAnimator.ofFloat(binding.optionTwoContainer,"translationY",0f)
+                    .setDuration(duration).start()
+                binding.optionOneContainer.animate()
+                    .alpha(0f)
+                    .setDuration(duration)
+                    .setListener(object : AnimatorListenerAdapter(){
+                        override fun onAnimationEnd(animation: Animator?) {
+                            super.onAnimationEnd(animation)
+                            binding.optionOneContainer.isClickable = false
+                        }
+                    })
+                binding.optionTwoContainer.animate()
+                    .alpha(0f)
+                    .setDuration(duration)
+                    .setListener(object : AnimatorListenerAdapter(){
+                        override fun onAnimationEnd(animation: Animator?) {
+                            super.onAnimationEnd(animation)
+                            binding.optionTwoContainer.isClickable = false
+                        }
+                    })
+                binding.transparentBackground.animate()
+                    .alpha(0f)
+                    .setDuration(duration)
+            }else{
+                isExpanded = true
 
-            val cb = ChangeBounds()
-            cb.duration= 2000
-            TransitionManager.beginDelayedTransition(binding.transitionsContainer,cb)
-            titles.shuffle()
+                ObjectAnimator.ofFloat(binding.plusImageview,"rotation",0f,315f)
+                    .setDuration(duration).start()
+                ObjectAnimator.ofFloat(binding.optionOneContainer,"translationY",-300f)
+                    .setDuration(duration).start()
+                ObjectAnimator.ofFloat(binding.optionTwoContainer,"translationY",-150f)
+                    .setDuration(duration).start()
+                binding.optionOneContainer.animate()
+                    .alpha(1f)
+                    .setDuration(duration)
+                    .setListener(object : AnimatorListenerAdapter(){
+                        override fun onAnimationEnd(animation: Animator?) {
+                            super.onAnimationEnd(animation)
+                            binding.optionOneContainer.isClickable = true
+                        }
+                    })
 
-            binding.transitionsContainer.removeAllViews()
-            titles.forEach {
-                binding.transitionsContainer.addView(TextView(this).apply {
-                    text = it
-                    ViewCompat.setTransitionName(this,it)
-                    gravity = Gravity.CENTER_HORIZONTAL
-                })
+                binding.optionTwoContainer.animate()
+                    .alpha(1f)
+                    .setDuration(duration)
+                    .setListener(object : AnimatorListenerAdapter(){
+                        override fun onAnimationEnd(animation: Animator?) {
+                            super.onAnimationEnd(animation)
+                            binding.optionTwoContainer.isClickable = true
+                        }
+                    })
+
+                binding.transparentBackground.animate()
+                    .alpha(0.4f)
+                    .setDuration(0)
             }
+
         }
     }
 
