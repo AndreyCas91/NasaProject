@@ -6,17 +6,20 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.graphics.Rect
 import android.media.Image
+import android.os.Binder
 import android.os.Bundle
 import android.transition.Transition
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.*
@@ -34,10 +37,21 @@ class AnimationsActivity : AppCompatActivity() {
         binding = ActivityAnimationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.scrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            binding.header.isSelected = binding.scrollView.canScrollVertically(-1)
-        }
 
+        binding.root.setOnClickListener {
+            val constraintSetStart = ConstraintSet()
+            constraintSetStart.clone(this,R.layout.activity_animations)
+            constraintSetStart.connect(R.id.title,ConstraintSet.END,R.id.backgroundImage,ConstraintSet.END)
+            constraintSetStart.connect(R.id.description,ConstraintSet.TOP,R.id.title,ConstraintSet.BOTTOM)
+            /*val constraintSetEnd = ConstraintSet()
+            constraintSetEnd.clone(this,R.layout.activity_animations_end)*/
+
+            val transition = ChangeBounds()
+            transition.duration = 1000
+            transition.interpolator = AnticipateOvershootInterpolator(1f)
+            TransitionManager.beginDelayedTransition(binding.root,transition)
+            constraintSetStart.applyTo(binding.constraintContainer)
+        }
 
     }
 
