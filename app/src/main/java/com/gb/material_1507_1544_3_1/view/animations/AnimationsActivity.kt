@@ -12,7 +12,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.*
 import com.gb.material_1507_1544_3_1.R
@@ -28,21 +30,28 @@ class AnimationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.button.setOnClickListener {
-            isDirectionRight = !isDirectionRight
-            val params = binding.button.layoutParams as FrameLayout.LayoutParams
-            params.gravity =if(isDirectionRight){
-                 Gravity.BOTTOM or Gravity.END
-            }else{
-                Gravity.TOP or Gravity.START
-            }
-            val transition = ChangeBounds()
-            val path = ArcMotion()
-            transition.setPathMotion(path)
-            transition.duration = 3000
-            TransitionManager.beginDelayedTransition(binding.transitionsContainer,transition)
 
-            binding.button.layoutParams = params
+        val titles: MutableList<String> = ArrayList()
+        for (i in 0..4) {
+            titles.add("Item $i")
+        }
+
+
+        binding.button.setOnClickListener {
+
+            val cb = ChangeBounds()
+            cb.duration= 2000
+            TransitionManager.beginDelayedTransition(binding.transitionsContainer,cb)
+            titles.shuffle()
+
+            binding.transitionsContainer.removeAllViews()
+            titles.forEach {
+                binding.transitionsContainer.addView(TextView(this).apply {
+                    text = it
+                    ViewCompat.setTransitionName(this,it)
+                    gravity = Gravity.CENTER_HORIZONTAL
+                })
+            }
         }
     }
 
