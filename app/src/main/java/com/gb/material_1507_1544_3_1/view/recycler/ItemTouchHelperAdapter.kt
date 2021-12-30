@@ -5,7 +5,3 @@ interface ItemTouchHelperAdapter {
     fun onItemDismiss(position: Int)
 }
 
-interface ItemTouchHelperViewHolder {
-    fun onItemSelected()
-    fun onItemClear()
-}

@@ -1,10 +1,13 @@
 package com.gb.material_1507_1544_3_1.view.recycler
 
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.MotionEventCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemEarthBinding
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemHeaderBinding
@@ -12,8 +15,13 @@ import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemMarsBinding
 
 class RecyclerActivityAdapter(
     private val data: MutableList<Pair<Data, Boolean>>,
-    private val callbackListener: MyCallback
+    private val callbackListener: MyCallback,
+    private val onStartDragListener: OnStartDragListener
 ) : RecyclerView.Adapter<BaseViewHolder>(),ItemTouchHelperAdapter {
+
+    interface OnStartDragListener {
+        fun onStartDrag(viewHolder: RecyclerView.ViewHolder)
+    }
 
 
     fun appendItem() {
@@ -100,6 +108,14 @@ class RecyclerActivityAdapter(
                 marsDescriptionTextView.visibility = if(data.second) View.VISIBLE else View.GONE
                 someTextTextView.setOnClickListener {
                     toggleDescription()
+                }
+
+                dragHandleImageView.setOnTouchListener{v, event->
+                    Log.d("mylogs","setOnTouchListener $event")
+                    if(MotionEventCompat.getActionMasked(event)== MotionEvent.ACTION_DOWN){ // TODO This method will be removed in a future release.
+                        onStartDragListener.onStartDrag(this@MarsViewHolder)
+                    }
+                    false
                 }
             }
         }
