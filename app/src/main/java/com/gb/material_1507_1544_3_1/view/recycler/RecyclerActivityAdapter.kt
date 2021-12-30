@@ -9,36 +9,52 @@ import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemEarthBindin
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemHeaderBinding
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemMarsBinding
 
-class RecyclerActivityAdapter(private val data:MutableList<Data>, private val callbackListener:MyCallback): RecyclerView.Adapter<BaseViewHolder>() {
+class RecyclerActivityAdapter(
+    private val data: MutableList<Pair<Data, Boolean>>,
+    private val callbackListener: MyCallback
+) : RecyclerView.Adapter<BaseViewHolder>() {
 
 
-    fun appendItem(){
+    fun appendItem() {
         data.add(generateItem())
-        notifyItemInserted(itemCount-1)
+        notifyItemInserted(itemCount - 1)
     }
 
-    private fun generateItem():Data{
-        return Data(someText = "Mars")
+    private fun generateItem(): Pair<Data, Boolean> {
+        return Data(someText = "Mars") to false
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return when (viewType){
+        return when (viewType) {
             TYPE_EARTH -> {
-                val bindingViewHolder =ActivityRecyclerItemEarthBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+                val bindingViewHolder = ActivityRecyclerItemEarthBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
                 EarthViewHolder(bindingViewHolder.root)
             }
             TYPE_HEADER -> {
-                val bindingViewHolder =ActivityRecyclerItemHeaderBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+                val bindingViewHolder = ActivityRecyclerItemHeaderBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
                 HeaderViewHolder(bindingViewHolder.root)
             }
             else -> {
-                val bindingViewHolder = ActivityRecyclerItemMarsBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+                val bindingViewHolder = ActivityRecyclerItemMarsBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
                 MarsViewHolder(bindingViewHolder.root)
             }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return data[position].type //
+        return data[position].first.type
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
@@ -49,21 +65,22 @@ class RecyclerActivityAdapter(private val data:MutableList<Data>, private val ca
         return data.size
     }
 
-    inner class EarthViewHolder(view: View):BaseViewHolder(view){
-        override fun bind(data:Data){
+    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
+        override fun bind(data: Pair<Data, Boolean>) {
             ActivityRecyclerItemEarthBinding.bind(itemView).apply {
-                someTextTextView.text = data.someText
-                descriptionTextView.text = data.someDescription
+                someTextTextView.text = data.first.someText
+                descriptionTextView.text = data.first.someDescription
                 wikiImageView.setOnClickListener {
                     callbackListener.onClick(layoutPosition)
                 }
             }
         }
     }
-    inner class MarsViewHolder(view: View):BaseViewHolder(view){
-        override fun bind(data:Data){
+
+    inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
+        override fun bind(data: Pair<Data, Boolean>) {
             ActivityRecyclerItemMarsBinding.bind(itemView).apply {
-                someTextTextView.text = data.someText
+                someTextTextView.text = data.first.someText
                 marsImageView.setOnClickListener {
                     callbackListener.onClick(layoutPosition)
                 }
@@ -73,14 +90,46 @@ class RecyclerActivityAdapter(private val data:MutableList<Data>, private val ca
                 removeItemImageView.setOnClickListener {
                     removeItem()
                 }
+                moveItemDown.setOnClickListener {
+                    moveDown()
+                }
+                moveItemUp.setOnClickListener {
+                    moveUp()
+                }
+                marsDescriptionTextView.visibility = if(data.second) View.VISIBLE else View.GONE
+                someTextTextView.setOnClickListener {
+                    toggleDescription()
+                }
             }
         }
-        private fun addItemToPosition(){
-            data.add(layoutPosition,generateItem())
+
+        private fun toggleDescription() {
+            data[layoutPosition] = data[layoutPosition].run {
+                first to !second
+            }
+            notifyItemChanged(layoutPosition)
+        }
+
+        private fun moveUp() { // FIXME ДЗ убрать ошиюбку java.lang.IndexOutOfBoundsException
+            data.removeAt(layoutPosition).apply {
+                data.add(layoutPosition - 1, this)
+            }
+            notifyItemMoved(layoutPosition, layoutPosition - 1)
+        }
+
+        private fun moveDown() { // FIXME ДЗ убрать ошиюбку java.lang.IndexOutOfBoundsException
+            data.removeAt(layoutPosition).apply {
+                data.add(layoutPosition + 1, this)
+            }
+            notifyItemMoved(layoutPosition, layoutPosition + 1)
+        }
+
+        private fun addItemToPosition() {
+            data.add(layoutPosition, generateItem())
             notifyItemInserted(layoutPosition)
         }
 
-        private fun removeItem(){
+        private fun removeItem() {
             data.removeAt(layoutPosition)
             notifyItemRemoved(layoutPosition)
         }
@@ -89,11 +138,10 @@ class RecyclerActivityAdapter(private val data:MutableList<Data>, private val ca
     }
 
 
-
-    inner class HeaderViewHolder(view: View):BaseViewHolder(view){
-        override fun bind(data:Data){
+    inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
+        override fun bind(data: Pair<Data, Boolean>) {
             ActivityRecyclerItemHeaderBinding.bind(itemView).apply {
-                header.text = data.someText
+                header.text = data.first.someText
                 root.setOnClickListener {
                     callbackListener.onClick(layoutPosition)
                 }
