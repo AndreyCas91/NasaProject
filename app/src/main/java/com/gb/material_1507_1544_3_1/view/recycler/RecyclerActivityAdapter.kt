@@ -9,7 +9,17 @@ import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemEarthBindin
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemHeaderBinding
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemMarsBinding
 
-class RecyclerActivityAdapter(private val data:List<Data>, private val callbackListener:MyCallback): RecyclerView.Adapter<BaseViewHolder>() {
+class RecyclerActivityAdapter(private val data:MutableList<Data>, private val callbackListener:MyCallback): RecyclerView.Adapter<BaseViewHolder>() {
+
+
+    fun appendItem(){
+        data.add(generateItem())
+        notifyItemInserted(itemCount-1)
+    }
+
+    private fun generateItem():Data{
+        return Data(someText = "Mars")
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return when (viewType){
             TYPE_EARTH -> {
@@ -57,9 +67,28 @@ class RecyclerActivityAdapter(private val data:List<Data>, private val callbackL
                 marsImageView.setOnClickListener {
                     callbackListener.onClick(layoutPosition)
                 }
+                addItemImageView.setOnClickListener {
+                    addItemToPosition()
+                }
+                removeItemImageView.setOnClickListener {
+                    removeItem()
+                }
             }
         }
+        private fun addItemToPosition(){
+            data.add(layoutPosition,generateItem())
+            notifyItemInserted(layoutPosition)
+        }
+
+        private fun removeItem(){
+            data.removeAt(layoutPosition)
+            notifyItemRemoved(layoutPosition)
+        }
+
+
     }
+
+
 
     inner class HeaderViewHolder(view: View):BaseViewHolder(view){
         override fun bind(data:Data){

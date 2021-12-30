@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerBinding
 
-class RecyclerActivity:AppCompatActivity() {
+class RecyclerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecyclerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,25 +14,31 @@ class RecyclerActivity:AppCompatActivity() {
         setContentView(binding.root)
 
         val data = arrayListOf(
-            Data("Earth",type= TYPE_EARTH),
-            Data("Earth",type= TYPE_EARTH),
-            Data("Mars", "",type= TYPE_MARS),
-            Data("Earth",type= TYPE_EARTH),
-            Data("Earth",type= TYPE_EARTH),
-            Data("Earth",type= TYPE_EARTH),
-            Data("Mars", null,type= TYPE_MARS)
+            Data("Earth", type = TYPE_EARTH)/*,
+            Data("Earth", type = TYPE_EARTH),
+            Data("Mars", "", type = TYPE_MARS),
+            Data("Earth", type = TYPE_EARTH),
+            Data("Earth", type = TYPE_EARTH),
+            Data("Earth", type = TYPE_EARTH),
+            Data("Mars", null, type = TYPE_MARS)*/
         )
-        data.add(0,Data("Заголовок",type= TYPE_HEADER))
+        data.add(0, Data("Заголовок", type = TYPE_HEADER))
 
 
-        binding.recyclerView.adapter = RecyclerActivityAdapter(data,
-        object : MyCallback{
-            override fun onClick(position: Int) {
-                Toast.makeText(this@RecyclerActivity,"РАБОТАЕТ ${data[position].someText} ${data[position].someDescription}",
-                    Toast.LENGTH_SHORT).show()
-            }
+        val adapter = RecyclerActivityAdapter(data,
+            object : MyCallback {
+                override fun onClick(position: Int) {
+                    Toast.makeText(
+                        this@RecyclerActivity,
+                        "РАБОТАЕТ ${data[position].someText} ${data[position].someDescription}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
-        })
-
+            })
+        binding.recyclerView.adapter = adapter
+        binding.recyclerActivityFAB.setOnClickListener {
+            adapter.appendItem()
+        }
     }
 }
