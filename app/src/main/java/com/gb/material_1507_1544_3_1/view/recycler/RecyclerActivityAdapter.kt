@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.MotionEventCompat
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemEarthBinding
 import com.gb.material_1507_1544_3_1.databinding.ActivityRecyclerItemHeaderBinding
@@ -24,13 +25,21 @@ class RecyclerActivityAdapter(
     }
 
 
+    fun setItems(newItems: List<Pair<Data, Boolean>>) {
+        val result = DiffUtil.calculateDiff(DiffUtilCallback(data, newItems))
+        result.dispatchUpdatesTo(this)
+        data.clear()
+        data.addAll(newItems)
+    }
+
+
     fun appendItem() {
         data.add(generateItem())
         notifyItemInserted(itemCount - 1)
     }
 
     private fun generateItem(): Pair<Data, Boolean> {
-        return Data(someText = "Mars") to false
+        return Data((0..9999999).random(),someText = "Mars") to false
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -64,6 +73,43 @@ class RecyclerActivityAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return data[position].first.type
+    }
+
+    /*override fun onBindViewHolder(
+        holder: BaseViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        if (payloads.isEmpty())
+            super.onBindViewHolder(holder, position, payloads)
+        else {
+            val combinedChange =
+                createCombinedPayload(payloads as MutableList<Change<Pair<Data, Boolean>>>)
+            val oldData = combinedChange.oldData
+            val newData = combinedChange.newData
+
+            if (newData.first.someText != oldData.first.someText) {
+                ActivityRecyclerItemMarsBinding.bind(holder.itemView).marsTextView.text = newData.first.someText
+            }
+        }
+    }*/
+
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int,payloads: MutableList<Any>) {
+        if(payloads.isEmpty()){
+            super.onBindViewHolder(holder, position, payloads)
+        }else{
+            val combinedChange =
+                createCombinedPayload(payloads as MutableList<Change<Pair<Data, Boolean>>>)
+            val oldData = combinedChange.oldData
+            val newData = combinedChange.newData
+            Log.d("mylogs","${(1..9999999).random()} ${
+                newData.first.someText!=oldData.first.someText
+            }")
+
+
+            ActivityRecyclerItemMarsBinding.bind(holder.itemView).someTextTextView.text = newData.first.someText
+
+        }
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
