@@ -11,6 +11,7 @@ import com.gb.material_1507_1544_3_1.view.constraint.MotionFragment
 import com.gb.material_1507_1544_3_1.R
 import com.gb.material_1507_1544_3_1.databinding.BottomNavigationLayoutBinding
 import com.gb.material_1507_1544_3_1.view.animations.AnimationsActivity
+import com.gb.material_1507_1544_3_1.view.recycler.RecyclerActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -48,6 +49,9 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
                 R.id.navigation_four -> {
                     startActivity(Intent(requireActivity(),AnimationsActivity::class.java))
+                }
+                R.id.navigation_five -> {
+                    startActivity(Intent(requireActivity(), RecyclerActivity::class.java))
                 }
             }
             dismiss()

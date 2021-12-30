@@ -18,4 +18,9 @@
         android:icon="@drawable/ic_search"
         android:title="Анимации" />
 
+    <item
+        android:id="@+id/navigation_five"
+        android:icon="@drawable/ic_wikipedia"
+        android:title="Recycler" />
+
 </menu>
