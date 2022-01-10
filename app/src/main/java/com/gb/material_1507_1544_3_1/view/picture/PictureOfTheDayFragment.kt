@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.*
 import androidx.activity.OnBackPressedCallback
@@ -110,11 +111,16 @@ class PictureOfTheDayFragment : Fragment() {
                 }
                 pictureOfTheDayResponseData.explanation?.let{
                     binding.textView.text = it
-                    //binding.textView.typeface = Typeface.createFromAsset(requireContext().assets,"Robus-BWqOd.otf")
+                    binding.textView.typeface = Typeface.createFromAsset(requireContext().assets,"Robus-BWqOd.otf")
                     binding.textView.typeface = Typeface.createFromAsset(requireContext().assets,"font/font/Robus-BWqOd.otf")
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         binding.textView.typeface = resources.getFont(R.font.a)
                     }
+
+                    val text = "My <h1> text </h1> <h2> text </h2> <ul><li>bullet one</li><li>bullet two</li></ul>"
+                    binding.textView.text = Html.fromHtml(text,Html.FROM_HTML_MODE_COMPACT)
+
+
                 }
 
 
