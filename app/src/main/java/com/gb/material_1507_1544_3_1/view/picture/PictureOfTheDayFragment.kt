@@ -2,7 +2,9 @@ package com.gb.material_1507_1544_3_1.view.picture
 
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -106,7 +108,16 @@ class PictureOfTheDayFragment : Fragment() {
                     error(R.drawable.ic_load_error_vector)
                     placeholder(R.drawable.ic_no_photo_vector)
                 }
-                binding.textView.text = pictureOfTheDayResponseData.explanation
+                pictureOfTheDayResponseData.explanation?.let{
+                    binding.textView.text = it
+                    //binding.textView.typeface = Typeface.createFromAsset(requireContext().assets,"Robus-BWqOd.otf")
+                    binding.textView.typeface = Typeface.createFromAsset(requireContext().assets,"font/font/Robus-BWqOd.otf")
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        binding.textView.typeface = resources.getFont(R.font.a)
+                    }
+                }
+
+
             }
         }
     }
