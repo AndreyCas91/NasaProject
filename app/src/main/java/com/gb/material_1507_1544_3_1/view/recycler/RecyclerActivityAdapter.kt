@@ -173,14 +173,14 @@ class RecyclerActivityAdapter(
             notifyItemChanged(layoutPosition)
         }
 
-        private fun moveUp() { // FIXME ДЗ убрать ошиюбку java.lang.IndexOutOfBoundsException
+        private fun moveUp() {
             data.removeAt(layoutPosition).apply {
                 data.add(layoutPosition - 1, this)
             }
             notifyItemMoved(layoutPosition, layoutPosition - 1)
         }
 
-        private fun moveDown() { // FIXME ДЗ убрать ошиюбку java.lang.IndexOutOfBoundsException
+        private fun moveDown() {
             data.removeAt(layoutPosition).apply {
                 data.add(layoutPosition + 1, this)
             }

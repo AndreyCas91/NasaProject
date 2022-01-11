@@ -151,7 +151,7 @@ class PictureOfTheDayFragment : Fragment() {
                                     R.color.colorAccent
                                 )
                             ),
-                            0, 10, Spannable.SPAN_EXCLUSIVE_INCLUSIVE // FIXME EXCLUSIVE_INCLUSIVE
+                            0, 10, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
                         )
                         spannable.insert(0, "1")
                         spannable.insert(10, "\n")
@@ -176,7 +176,7 @@ class PictureOfTheDayFragment : Fragment() {
                             )
                         }
                         spannable.setSpan(
-                            q, 0, 20, Spannable.SPAN_EXCLUSIVE_INCLUSIVE // FIXME EXCLUSIVE_INCLUSIVE
+                            q, 0, 20, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
                         )
                         val qq = QuoteSpan(
                             ContextCompat.getColor(
@@ -185,7 +185,7 @@ class PictureOfTheDayFragment : Fragment() {
                             )
                         )
                         spannable.setSpan(
-                            qq, 10, 19, Spannable.SPAN_EXCLUSIVE_INCLUSIVE // FIXME EXCLUSIVE_INCLUSIVE
+                            qq, 10, 19, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
                         )
 
 
