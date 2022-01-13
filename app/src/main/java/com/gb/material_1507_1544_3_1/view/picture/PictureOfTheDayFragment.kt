@@ -28,16 +28,22 @@ import com.gb.material_1507_1544_3_1.view.chips.SettingsFragment
 import com.gb.material_1507_1544_3_1.viewmodel.PictureOfTheDayState
 import com.gb.material_1507_1544_3_1.viewmodel.PictureOfTheDayViewModel
 import com.gb.material_1507_1544_3_1.R
+import com.gb.material_1507_1544_3_1.databinding.FragmentMainBinding
+import com.gb.material_1507_1544_3_1.databinding.FragmentMainEndBinding
 import com.gb.material_1507_1544_3_1.databinding.FragmentMainStartBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import smartdevelop.ir.eram.showcaseviewlib.GuideView
+import smartdevelop.ir.eram.showcaseviewlib.config.DismissType
+import smartdevelop.ir.eram.showcaseviewlib.config.Gravity
+import smartdevelop.ir.eram.showcaseviewlib.listener.GuideListener
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
 
-    private var _binding: FragmentMainStartBinding? = null
-    val binding: FragmentMainStartBinding
+    private var _binding: FragmentMainBinding? = null
+    val binding: FragmentMainBinding
         get() {
             return _binding!!
         }
@@ -93,6 +99,20 @@ class PictureOfTheDayFragment : Fragment() {
 
         setBottomAppBar()
 
+
+        val builder = GuideView.Builder(requireContext())
+            .setTitle("Новая фича")
+            .setContentText("Мы добавили")
+            .setGravity(Gravity.center)
+            //.setDismissType(DismissType.selfView)
+            .setTargetView(binding.inputEditText)
+            .setDismissType(DismissType.anywhere)
+            .setGuideListener(object : GuideListener {
+                override fun onDismiss(view: View?) {
+
+                }
+            })
+        builder.build().show()
     }
 
     private fun takeDate(count: Int): String {
@@ -135,74 +155,7 @@ class PictureOfTheDayFragment : Fragment() {
             "com.google.android.gms.fonts", "com.google.android.gms",
             "Aguafina Script", R.array.com_google_android_gms_fonts_certs
         )
-        val callback = object : FontsContractCompat.FontRequestCallback(){
-            override fun onTypefaceRetrieved(typeface: Typeface?) {
-                Log.d("mylogs","onTypefaceRetrieved ${r}")
-                typeface?.let {
-                    Log.d("mylogs","let ${r}")
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        val spannableStart = SpannableStringBuilder(text)
-                        binding.textView.setText(spannableStart, TextView.BufferType.EDITABLE)
-                        val spannable = binding.textView.text as SpannableStringBuilder
-                        spannable.setSpan(
-                            ForegroundColorSpan(
-                                ContextCompat.getColor(
-                                    requireContext(),
-                                    R.color.colorAccent
-                                )
-                            ),
-                            0, 10, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-                        )
-                        spannable.insert(0, "1")
-                        spannable.insert(10, "\n")
-                        spannable.insert(20, "\n")
 
-                        val q: QuoteSpan
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                            q = QuoteSpan(
-                                ContextCompat.getColor(
-                                    requireContext(),
-                                    R.color.colorAccent
-                                ),
-                                20,
-                                40
-                            )
-                        } else {
-                            q = QuoteSpan(
-                                ContextCompat.getColor(
-                                    requireContext(),
-                                    R.color.colorAccent
-                                )
-                            )
-                        }
-                        spannable.setSpan(
-                            q, 0, 20, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-                        )
-                        val qq = QuoteSpan(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.colorAccent
-                            )
-                        )
-                        spannable.setSpan(
-                            qq, 10, 19, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-                        )
-
-
-                        spannable.setSpan(TypefaceSpan(it),
-                        0,50,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
-                        //spannable.insert(0, "1")
-                    }
-                }
-            }
-
-            override fun onTypefaceRequestFailed(reason: Int) {
-                super.onTypefaceRequestFailed(reason)
-                Log.d("mylogs","onTypefaceRequestFailed ${(1..9999).random()}")
-            }
-        }
-        val handler = Handler(Looper.getMainLooper())
-        FontsContractCompat.requestFont(requireContext(),requestCallback,callback,handler)
 
     }
 
@@ -211,7 +164,7 @@ class PictureOfTheDayFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainStartBinding.inflate(inflater, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
