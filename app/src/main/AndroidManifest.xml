@@ -13,6 +13,13 @@
         android:theme="@style/Theme.Material_1507_1544_3_1">
         <activity
             android:name="com.gb.material_1507_1544_3_1.view.MainActivity"
+            android:theme="@style/Theme.Material_1507_1544_3_1.Splash"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".view.SplashActivity"
+            android:noHistory="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
